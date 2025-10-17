@@ -2,29 +2,46 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>The Treasue Hunt - I Tech SMAWA</title>
+  <title>Rahasia Harta Karun</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f8ff;
+      font-family: 'Courier New', monospace;
+      background-color: #0b0c10;
+      color: #e0e0e0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       height: 100vh;
-      padding: 20px;
+      margin: 0;
+      overflow: hidden;
+      background-image: radial-gradient(circle, #1c1c1c 0%, #000000 100%);
+      animation: flickerBg 5s infinite alternate;
+    }
+
+    @keyframes flickerBg {
+      0% { background-color: #0b0c10; }
+      100% { background-color: #000000; }
     }
 
     h1 {
-      color: #2c3e50;
+      color: #ff0000;
+      text-shadow: 0 0 10px red;
+      animation: pulse 2s infinite;
       text-align: center;
     }
 
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
     .container {
-      background-color: #ffffff;
+      background-color: rgba(20, 20, 20, 0.9);
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
       max-width: 600px;
       text-align: center;
     }
@@ -34,45 +51,69 @@
       width: 80%;
       margin-top: 20px;
       font-size: 16px;
-      border: 2px solid #3498db;
+      border: 2px solid #ff0000;
       border-radius: 8px;
+      background-color: #111;
+      color: #fff;
     }
 
     button {
       margin-top: 20px;
       padding: 10px 20px;
       font-size: 16px;
-      background-color: #3498db;
+      background-color: #ff0000;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      box-shadow: 0 0 10px red;
     }
 
     button:hover {
-      background-color: #2980b9;
+      background-color: #cc0000;
     }
 
     .clue {
       margin-top: 30px;
       padding: 20px;
-      background-color: #eafaf1;
-      border-left: 5px solid #2ecc71;
+      background-color: #111;
+      border-left: 5px solid #ff0000;
       display: none;
       font-size: 18px;
-      color: #2c3e50;
+      color: #f8f8f8;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .error {
-      color: red;
+      color: #ff4444;
       margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .glitch {
+      color: #ff0000;
+      font-size: 1.2em;
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red, -2px 0 blue; }
+      20% { text-shadow: -2px 0 red, 2px 0 blue; }
+      40% { text-shadow: 2px 2px red, -2px -2px blue; }
+      60% { text-shadow: -2px 2px red, 2px -2px blue; }
+      80% { text-shadow: 2px 0 red, -2px 0 blue; }
+      100% { text-shadow: 0 0 red, 0 0 blue; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🔍 Welcome To The Treasure Hunt 2025 <br> I-Tech SMAWA</h1>
-    <p><strong>Who Am I ? </strong><br>
+    <h1 class="glitch">🕯️ The Treasure Hunt <br> I-Tech SMAWA</h1>
+    <p><strong>Who am i ? </strong><br>
     Aku adalah sebuah benda yang jika ditekan akan membuat seisi ruangan seolah pindah ke Kutub Utara.</p>
     
     <input type="text" id="answer" placeholder="Masukkan jawaban di sini...">
@@ -81,7 +122,7 @@
     <div class="clue" id="clueBox">
       <strong>Clue:</strong><br>
       Jawaban Anda sebelumnya akan mengantarkan pada benda penyambung kehidupan manusia tetapi juga mampu memancing amarah dan perang bangsa-bangsa.<br>
-      Tetapi di sana Anda akan menemukan harta terpendam yang akan membahagiakan.<br><br>
+      ⚠️ Tetapi di sana Anda akan menemukan harta terpendam yang akan membahagiakan.<br><br>
       
     </div>
   </div>
@@ -97,7 +138,7 @@
         errorMsg.textContent = "";
       } else {
         clueBox.style.display = "none";
-        errorMsg.textContent = "Jawaban salah. Coba lagi!";
+        errorMsg.textContent = "❌ Jawaban salah. Coba lagi... sebelum semuanya gelap.";
       }
     }
   </script>
